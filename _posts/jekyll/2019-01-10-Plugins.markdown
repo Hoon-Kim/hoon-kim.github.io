@@ -1,0 +1,126 @@
+---
+layout: post
+title:  Jekyll Plugins
+categories: category jekyll
+tags: jekyll, plugins
+toc: true
+original_url:
+---
+
+# Plugins 설치 방법 3가지
+
+#### 1. `_plugins` 디렉토리
+사이트 원본 루트에서 `_plugins` 디렉터리를 만든다.
+플러그인을 여기에 복사한다.
+Jekyll이 사이트를 생성하기 전에 이 디렉토리의 * .rb로 끝나는 파일이 로드된다.
+
+#### 2. `_config.yml` 파일 및 설치
+`_config.yml` 파일에 plugins 키값에 플러그인 목록을 나열한다.
+(Jekyll 3.5.0 미만은 gems 파일)
+
+```yaml
+# This will require each of these plugins automatically.
+plugins:
+  - jekyll-gist
+  - jekyll-coffeescript
+  - jekyll-assets
+  - another-jekyll-plugin
+```
+
+그 다음, 아래와 같이 플러그인을 설치한다.
+```sh
+gem install jekyll-gist jekyll-coffeescript jekyll-assets another-jekyll-plugin
+```
+
+### 3. `Gemfile` 파일
+`Gemfile`에 있는 Bundler group에 플러그인 목록을 나열한다.
+```ruby
+group :jekyll_plugins do
+   gem "jekyll-gist"
+   gem "jekyll-coffeescript"
+   gem "jekyll-assets"
+   gem "another-jekyll-plugin"
+end
+```
+
+그 다음, 아래와 같이 플러그인을 설치한다.
+```sh
+bundle install
+```
+
+**Note: **
+_plugins, _config.yml 및 Gemfile을 동시에 사용할 수 있다.
+같은 사이트에서 위에서 언급 한 플러그인 옵션을 동시에 선택할 수 있다.
+하나의 사용은 다른 것들의 사용을 제한하지 않는다.
+
+**Note: **
+`_config.yml` 파일의 `plugins:` 항목에 명시적으로 나열되어 있지 않은 경우에도,
+`Gemfile` 파일의 `group`에 있는 플러그인들은 Jekyll이 소스를 processing하기 전에 이미 로딩된다.
+즉, `Gemfile` 파일의 플러그인들에 우선순위가 있다!
+
+
+**Note: **
+`Gemfile` 파일의 jekyll-plugins 그룹에 포함 된 gems은 -safe 모드 설정에 관계없이 활성화된다.
+이 그룹에 어떤 gems이 포함되어 있는지 알고 있어야 한다!
+
+
+### 실제로 `jekyll-toc` plugin 설치과정!
+`Gemfile`에 있는 Bundler group에 플러그인 목록에 `jekyll-toc` 플러그인을 추가한다:
+```ruby
+group :jekyll_plugins do
+  gem "jekyll-feed", "~> 0.6"
+  gem "jekyll-toc"      # added by kimhoon
+```
+
+그 다음, 아래와 같이 플러그인을 설치한다.
+```sh
+bundle install
+```
+
+`_config.yml` 파일에 plugins 키값에 플러그인 목록을 나열한다.
+
+```yaml
+plugins:
+  - jekyll-feed
+  - jekyll-toc # added by kimhoon
+```
+
+각 post에서 front matter tags에  `toc: true`를 추가한다.
+
+```yaml
+---
+layout: post
+title: "Welcome to Jekyll!"
+toc: true
+---
+```
+
+
+
+# GitHub Pages의 플러그인 제한
+GitHub Pages는 Jekyll에 의해 구동된다.
+모든 페이지 사이트는 보안상의 이유로 --safe 옵션을 사용하여 플러그인을 비활성화한다.
+([일부 허용 된 플러그](https://pages.github.com/versions/){:target="_blank"}인 제외).
+안타깝게도 GitHub 페이지에 배포하는 경우 플러그인이 작동하지 않는다는 것을 의미한다.
+
+여전히 GitHub 페이지를 사용하여 사이트를 게시 할 수 있지만,
+Jekyll 소스 파일 대신에 `사이트를 로컬로 변환하고 생성 된 정적 파일`을 GitHub 저장소로 푸시해야 한다.
+
+
+
+# Plugins 종류(일부)
+
+#### Generators
+- [jekyll-sitemap](https://github.com/jekyll/jekyll-sitemap){:target="_blank"}
+  - 검색 엔진이 콘텐츠를 색인 할 수 있도록 사이트 맵 파일을 만든다.
+- [jekyll-feed](https://github.com/jekyll/jekyll-feed){:target="_blank"}
+  - 게시물에 대한 RSS 피드를 만든다.
+- [jekyll-seo-tag](https://github.com/jekyll/jekyll-seo-tag){:target="_blank"}
+  - SEO에 도움이되는 메타 태그를 추가한다.
+
+#### Converters
+- [jekyll-coffeescript](https://github.com/jekyll/jekyll-coffeescript){:target="_blank"}
+  - Coffeescript을 JavaScript로 변환한다.
+
+#### Github Pages에서 허용된 플러그인들
+[링크](https://pages.github.com/versions/){:target="_blank"}

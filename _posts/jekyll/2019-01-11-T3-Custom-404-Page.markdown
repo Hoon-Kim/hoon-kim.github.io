@@ -1,0 +1,65 @@
+---
+layout: post
+title:  "Custom 404 Page"
+date:   2019-01-11 10:00:00 +0900
+categories: category jekyll
+tags: jekyll, 404
+toc: true
+original_url: 'https://jekyllrb.com/tutorials/custom-404-page/'
+---
+
+### On GitHub Pages
+GitHub Pages나 Jekyll에서는 404.html이 루트 디렉토리에 자동으로 구성된다.
+
+단순히 404.md 또는 404.html을 루트 디렉토리에 추가하고, 테마의 기본 레이아웃을 이용하기 위해 `front matter tags`를 포함시키면 된다.
+
+만약, 하위 디렉토리에 파일을 구성할 경우, front matter tags로 `permalink: /404.html`이 명시되어야 한다.
+서버는 루트 디렉토리에서 404 페이지를 찾기 때문에, 컴파일된 404 페이지의 위치를 루트 디렉토리로 설정한다:
+```markdown
+---
+# example 404.md
+
+layout: default
+permalink: /404.html
+---
+
+# 404
+
+Page not found! :(
+```
+
+
+### Hosting on Apache Web Servers
+아파치 웹 서버는 서버의 기능을 수정하는데, `.htaccess` 파일을 로딩한다.
+
+단지, '.htaccess' 파일에 아래를 추가하기만 하면 된다.
+
+```apache
+ErrorDocument 404 /error_pages/404.html
+```
+
+만약, 하위 디렉토리에 파일을 구성할 경우, 이 `.htaccess` 파일을 다음과 같이 설정하기면 된다.
+
+```apache
+ErrorDocument 404 /error_pages/404.html
+```
+
+[공식문서](https://httpd.apache.org/docs/current/mod/core.html#errordocument){:target="_blank"}를 참고하라.
+
+### Hosting on Nginx server
+
+보통 `/etc/nginx/` 또는 `/etc/nginx/conf/`에 있는 `nginx.conf` 파일에서 설정한다.
+그런데, Ubuntu 같은 일부 시스템은 `/etc/nginx/sites-enabled/` 또는 `/etc/nginx/sites-available/` 경로에서 서버 정보를 가진 `default` 설정 파일을 확인해야 한다.
+
+아래와 같은 내용을 `nginx.conf` 파일 또는 `default` 파일에 추가하면 된다.
+
+```nginx
+server {
+  error_page 404 /404.html;
+  location = /404.html {
+    internal;
+  }
+}
+```
+
+[공식문서](http://nginx.org/en/docs/http/ngx_http_core_module.html#error_page){:target="_blank"}를 참고하라.

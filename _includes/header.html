@@ -1,0 +1,16 @@
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>{{ page.title }}</title>
+<meta name="description" content="{{ page.description }}">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Kim Hoon">
+<link rel="author" href="{{ 'humans.txt' | relative_url }}"/>
+
+{% include favicons.html %}
+
+<link rel="stylesheet" href="{{ '/assets/css/materia/bootswatch.min.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/normalize.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/custom.min.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+
+{% include social.html %}

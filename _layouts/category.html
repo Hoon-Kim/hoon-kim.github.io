@@ -1,0 +1,28 @@
+---
+layout: default
+---
+
+
+<h3>* 포스트 읽기</h3>
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a> <span class="badge badge-success">{{ post.date }}</span>
+      <div class="excerpt">
+        {{ post.excerpt }}
+      </div>
+      <!-- {{ post.excerpt | remove: '<p>' | remove: '</p>' }} -->
+    </li>
+  {% endfor %}
+</ul>
+
+<hr>
+<h3>* categories.jekyll 읽기(3개)</h3>
+
+<ul class="myposts">
+{% for post in site.categories.jekyll limit:3 %}
+    <li><a href="{{ post.url }}">{{ post.title}}</a>
+    <span class="postDate">{{ post.date | date: "%b %-d, %Y" }}</span>
+    </li>
+{% endfor %}
+</ul>

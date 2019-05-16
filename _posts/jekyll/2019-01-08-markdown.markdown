@@ -1,0 +1,48 @@
+---
+layout: post
+title:  Markdown
+categories: category jekyll
+tags: jekyll, markdown, kramdown
+toc: true
+original_url:
+---
+
+### Markdown 이란?
+- text-to-HTML conversion tool
+- perl로 작성되었음
+- BSD-style open source license
+
+
+### 요구사항
+- Perl 5.6.0+
+- Digest::MD5
+
+
+### 사용법
+% perl Markdown.pl --html4tags foo.text
+
+
+### GFM(GitHub Flavored Markdown)
+- Version 0.28-gfm (2017-08-01)
+- GitHub.com 및 GitHub Enterprise에서 지원된다.
+- based on the [CommonMark Spec](https://spec.commonmark.org/){:target="_blank"}
+- **extensions**(확장기능): CommonMark Spec에는 없는 GFM의 추가된 기능
+
+
+
+### 참고사이트
+[Mastering Markdown](https://guides.github.com/features/mastering-markdown/){:target="_blank"}
+
+[DARING FIREBALL](https://daringfireball.net/projects/markdown/){:target="_blank"}
+
+[What is Markdown?](http://kirkstrobeck.github.io/whatismarkdown.com/){:target="_blank"}
+
+[마크다운 markdown 작성법](https://gist.github.com/ihoneymon/652be052a0727ad59601){:target="_blank"}
+
+[Learn X in Y minutes](https://learnxinyminutes.com/docs/markdown/){:target="_blank"}
+
+[GitHub Flavored Markdown Spec](https://github.github.com/gfm/){:target="_blank"}
+
+> [kramdown](https://rubygems.org/gems/kramdown/){:target="_blank"}
+>
+> [kramdown Homepage](https://kramdown.gettalong.org){:target="_blank"}

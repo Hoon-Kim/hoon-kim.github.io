@@ -1,0 +1,70 @@
+---
+layout: post
+title:  Rouge
+categories: category jekyll
+tags: jekyll, rouge
+toc: true
+original_url:
+---
+
+2016년 2월 1일에 GitHub Pages는 Jekyll 3.0부터 syntax highlighting으로 **Rouge** 만 지원한다고 공표했다.([관련 링크](https://blog.github.com/2016-02-01-github-pages-now-faster-and-simpler-with-jekyll-3-0/){:target="_blank"} )
+
+
+이것은 더이상 Python과 Pygments를 설치할 필요가 없다는 의미다.
+
+Rouge는 순수한 Ruby systax highlighter이다.
+100개 이상의 언어를 지원하며,
+triple backticks( \`\`\`)으로 둘러싸인 코드블럭을 통해 systax highlighting을 할 수 있다:
+
+~~~sh
+```sh
+function test() {
+  console.log("notice the blank line before this function?");
+}
+```
+~~~
+
+또한, 이젠 GitHub Pages는 Jekyll의 기본 Markdown Engine인 kramdown만을 지원하게 된다.
+
+Jekyll 3.0부터는 [Rouge](http://rouge.jneen.net/){:target="_blank"}, [kramdown](https://kramdown.gettalong.org/){:target="_blank"} 등이 함께 설치되므로, 추가로 설치할 필요가 없다.
+
+Rouge 설치 방법:
+```sh
+gem install rouge
+```
+
+kramdown 설치 방법:
+```sh
+gem install kramdown
+```
+
+설치된 Rouge에서 사용가능한 CSS 테마 확인하기:
+```sh
+
+F:\Jekyll>rougify help style
+usage: rougify style [<theme-name>] [<options>]
+
+Print CSS styles for the given theme.  Extra options are
+passed to the theme. To select a mode (light/dark) for the
+theme, append '.light' or '.dark' to the <theme-name>
+respectively. Theme defaults to thankful_eyes.
+
+options:
+  --scope       (default: .highlight) a css selector to scope by
+
+available themes:
+  base16, base16.dark, base16.light, base16.monokai, base16.monokai.dark, base16.monokai.light, base16.solarized, base16.solarized.dark, base16.solarized.light, colorful, github, gruvbox, gruvbox.dark, gruvbox.light, igorpro, molokai, monokai, monokai.sublime, pastie, thankful_eyes, tulip
+```
+
+base16.solarized.dark 테마를 이용하여, CSS 생성하기:
+```sh
+rougify style base16.solarized.dark > css/syntax.css
+```
+
+이렇게 생성된 css 파일을 html헤더에 명기하면 된다.
+```sh
+<link href="/css/syntax.css" rel="stylesheet">
+```
+
+
+**Note:** syntax highlight를 구현할 경우, [highlight](https://highlightjs.org/){:target="_blank"}를 사용할 수도 있다.

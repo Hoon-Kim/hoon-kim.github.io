@@ -1,0 +1,14 @@
+<!doctype html>
+<html class="no-js" lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    {% include header.html %}
+  </head>
+  <body>
+    {% include navigation.html %}
+    <div class="container">
+      {{ content }}
+      {% include footer.html %}
+    </div>
+    {% include scripts.html %}
+  </body>
+</html>

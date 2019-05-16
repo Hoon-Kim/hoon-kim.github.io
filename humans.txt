@@ -1,0 +1,19 @@
+# humanstxt.org/
+
+/* TEAM */
+Developer: Kim Hoon.
+Site: hoon-kim.github.io
+email: kimhoon73@gmail.com
+Date of birth: 1973/03/04
+Twitter: @kimhoon73
+Location: Seoul, South Korea(ROK).
+
+/* THANKS */
+Name: All of webs
+
+/* SITE */
+Last update: 2019/02/01
+Standards: HTML5, CSS3
+Components: Modernizr, jQuery, Bootstrap, HTML5-Boilerplate
+Software: Jekyll
+IDE: Atom

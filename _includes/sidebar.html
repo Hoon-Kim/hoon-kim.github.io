@@ -1,0 +1,29 @@
+<nav class="collapse bd-links" id="bd-docs-nav">
+  {%- assign page_slug = page.url | split: '/' | last -%}
+  {%- for group in site.data.nav -%}
+  {%- assign link = group.pages | first -%}
+  {%- assign link_slug = link.title | slugify -%}
+  {%- assign group_slug = group.title | slugify -%}
+  {%- assign active = nil -%}
+
+  {%- if page.group == group_slug -%}
+    {%- assign active = 'active' -%}
+  {%- endif -%}
+
+  <div class="bd-toc-item{% unless active == nil %} {{ active }}{% endunless %}">
+      <div class="bd-toc-link">{{ group.title }}</div>
+      <ul class="nav">
+        {%- for doc in group.pages -%}
+          {%- assign doc_slug = doc.title | slugify -%}
+
+          <li{% if page_slug == doc_slug %} class="{{ 'active' }}"{% endif %}>
+            <!-- <a href="{{ site.baseurl }}/docs/{{ doc_slug }}/"> -->
+            <a href="{{ site.baseurl }}/category/{{ doc_slug }}/">
+              {{ doc.title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endfor -%}
+</nav>

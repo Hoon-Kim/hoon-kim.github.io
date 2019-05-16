@@ -1,0 +1,14 @@
+{% assign page_title_slug = page.title | slugify  %}
+{% assign lists = site.posts | where: "categories", page_title_slug %}
+<div class="container">
+  <ul class="post-list">
+    {% for post in lists %}
+      <li>
+        <a href="{{ post.url }}">{{ post.title }}</a>
+        <div class="excerpt">
+          {{ post.excerpt }}
+        </div>
+      </li>
+    {% endfor %}
+  </ul>
+</div>

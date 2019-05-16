@@ -1,0 +1,13 @@
+---
+---
+
+// @import 'theme';
+
+@import 'theme';
+.post-list .excerpt *,.post-list .ais-hits *{font-size:1em;}
+.bd-content>h2[id]::before,.bd-content>h3[id]::before,.bd-content>h4[id]::before{display:block;height:6rem;margin-top:-6rem;content:"";}
+p>img{border:1px solid blue;max-width:800px;max-height:800px;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+  border-color: rgb(170, 156, 156) !important;
+}
